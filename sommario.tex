@@ -1,0 +1,41 @@
+\chapter*{Sommario} % senza numerazione
+\label{sommario}
+
+\addcontentsline{toc}{chapter}{Sommario} % da aggiungere comunque all'indice
+
+Nell' ambito della robotica i droni e piú in generale gli UAVs ( Unnamed autonomous Vehicle) sono un'aspetto molto importante che negli anni futuri verrano utilizzati in modo continuo in ambiti tra loro anche molto vari. Per poter coprire situazioni piu' vero simili dove gli ambienti di utilizzo diventano particolarmente estesi e' necessaro l' utilizzo di ciao matteo buona tesi
+
+Gli UAVs ( Unnamed Aerial Vehicles ) comunemente conosciuti come droni sono robot che nell'evoluzione tecnologica che la nostra societa' sta portando avanti si stanno particolarmente facendo notare. Le loro applicazioni stanno diventando di giorno in giorno piú varie e li si iniziano vedere utilizzati sia da hobbisti sia da aziende che hanno bisogno di veicoli piú o meno autonomi per scopi quali riprese video, agricoltura, etc. 
+
+L' utilizzo di singoli droni per compiti specifici e' dunque giá comune ma ci sono limitazioni a cui queste macchine vanno incontro quali l'autonomia, il raggio d'azione e il peso che possono trasportare, di conseguenza ci sono molti campi in cui un singolo drone non sarebbe utile e operazioni piú costose come l' utilizzo di aeroplani o elicotteri sono necessari. Per questo una delle possibili aree di sviluppo di questa tecnologia é l' utilizzo di una moltitudine di UAVs cooperanti che conseguono lo stesso obbiettivo, in modo che le limitazioni quali il raggio d'azione e il peso di un carico possano essere superate attraverso l' utilizzo di piú unitá. 
+
+Partendo da quest' idea sono molti gli aspetti e le problematiche che sono causate dall' utilizzo di molte entitá al posto di una soltanto, basta a pensare la gestione di una persona, contro la gestione di un gruppo di persone al posto della coordinazione di una folla. 
+
+Il contesto da me analizzato cerca di risolvere uno dei problemi intrinsechi a questa tecnoglogia ovvero quello del collision avoidance. E' normale pensare che in un'applicazione dove molti droni lavorano nello stesso spazio questi non si scontrino e di conseguenza non si rompano a causa delle collisioni e delle conseguenti cadute. Ma al contrario del volo di aerei o di elicotteri che sono guidati da esseri umani e lo spazio relativo tra due veicoli e' elevato, in applicazioni tra droni queste due caratteristiche non sono sempre replicabili, deve esserci quindi un qualcosa che regoli gli spostamenti dei droni senza che essi si scontrino.
+
+L'obiettivo e' quindi quello di implementare una soluzione che impedisca queste collisioni. L' utilizzo di un software che gestisca questo problema sembra una cosa sensata ma la relazione tra software e ambiente fisico non e' cosí facile. I dati forniti dai sensori possono contenere errori o fluttuazioni e il calcolo di una soluzione istantea e' intrinsecamente impossibile nella natura stessa dei computer. Ci si approccia quindi con i problemi tipici che la robotica affronta ogni giorno e che sono causati dal bisogno di rappresentare il mondo reale in un ambiente virtuale e di ritrasformare i comandi e le informazioni ottenute dopo la computazione nel mondo reale.  
+
+Si e' deciso quindi di utilizzare un' algoritmo di natura matematicamente ottima e applicarlo in una simulazione di un ambiente reale per studiare e analizzare il suo comportamento in una situazione fisicamente plausibile ma soprattutto complessa come quella di un volo, in cui le velocita' e le direzioni non sono di facile manovrabilita'.
+L'algoritmo in questione e' ORCA (Optimal Reciprocal Collision Avoidance) un' algoritmo che presuppone di avere in ogni momento il vettore delle velocita'e il vettore della posizione di ogni elemento per poter calcolare in ogni momento la velocita'  piú vicina a quella che aveva al momento precedente e che impedisca al contempo lo scontro con le altre entita su cui e' stato eseguito lo stesso calcolo. 
+
+
+Per questa implementazione si e' deciso di utilizzare il Firmware open source PX4 che gestisce il volo dei droni e ha il controllo diretto dei rotori e della gestione a basso livello del volo. E lasciare il calcolo e l'invio delle velocita' da applicare ad ogni drone per evitare le collisioni ad un software offboard sviluppata con ROS (Robot Operating System) che esegue i calcoli per ogni drone a partire dalle informazioni di posizione e velocita' fornito da ogni elemento dello stormo. Di conseguenza ad ogni drone viene inviata la velocita' istananea che dovrebbe avere nel momento successivo a quello in cui ha pubblicato le informazioni di posizione fornite dal suo sensore. E viene lasciata eseguire la variazione di velocita' al Firmware.
+
+Il testing é stato eseguito sulla piattaforma Gazebo vista la possibilta' di simulare scenari realistici grazie al suo phisic engine.
+
+Il lavoro si e' svolto quindi nell' implementazione di una libreria di collision avoidance ORCA utilizzabile attraverso la piattaforma ROS. E nel testing che ne consegue. L'algoritmo richiede la posizione in ogni momento di ogni drone 
+
+  Sommario è un breve riassunto del lavoro svolto dove si descrive l'obiettivo, l'oggetto della tesi, le 
+metodologie e le tecniche usate, i dati elaborati e la spiegazione delle conclusioni alle quali siete arrivati.  
+
+Il sommario dell’elaborato consiste al massimo di 3 pagine e deve contenere le seguenti informazioni:
+\begin{itemize}
+  \item contesto e motivazioni 
+  \item breve riassunto del problema affrontato
+  \item tecniche utilizzate e/o sviluppate
+  \item risultati raggiunti, sottolineando il contributo personale del laureando/a
+\end{itemize}
+
+
+
+
